@@ -39,7 +39,7 @@ export class Inquiries extends Component {
                <td key={item.id}>{item.id}</td>
                <td>{item.name}</td>
                <td>{item.current_status.status}</td> 
-                <td>{item.current_status.contractor.username}</td> 
+              <td>{item.current_status.contractor.username}</td> 
                <td>{item.payment_m}</td>
                <td>{item.date_created}}</td>
                </tr>))}

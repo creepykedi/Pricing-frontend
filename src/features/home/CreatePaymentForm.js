@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
-import Row from 'react-bootstrap/Row';
 
 export class CreatePaymentForm extends Component {
   
@@ -45,9 +44,13 @@ sendFormData() {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(formData)
-      }).then(function(response) {
-        console.log(response)
-        return response.json();
+      }).then((response) => {
+        if (response.status==201){
+          this.setState({message: "Успешно создано!"})
+          console.log(response)
+        } else if(response.status==400){
+          this.setState({message: "Некорректные данные!"})
+        }
       });
 }
 
