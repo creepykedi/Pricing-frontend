@@ -45,10 +45,10 @@ sendFormData() {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(formData)
       }).then((response) => {
-        if (response.status==201){
+        if (response.status===201){
           this.setState({message: "Успешно создано!"})
           console.log(response)
-        } else if(response.status==400){
+        } else if(response.status===400){
           this.setState({message: "Некорректные данные!"})
         }
       });
@@ -64,14 +64,14 @@ sendFormData() {
         <form onSubmit={this.handleSubmit}>
 
           <p> <label for="inquiry_id">Номер запроса</label>
-          <input id="inquiry_id" type="text" ref="inquiry_id"/></p>
+          <input id="inquiry_id" type="number" ref="inquiry_id"/></p>
     
          
           <p> <label for="nmc_id">НМЦ</label>
-          <input id="nmc_id" type="text" ref="nmc_id"/></p>
+          <input id="nmc_id" type="number" ref="nmc_id"/></p>
         
           <p> <label for="payment_id">Номер расчета</label>
-          <input id="payment_id" type="text" ref="id" /></p>
+          <input id="payment_id" type="number" ref="id" /></p>
           
           <p><input type="submit" /></p>
         </form>

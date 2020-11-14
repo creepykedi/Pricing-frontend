@@ -54,10 +54,10 @@ export class CreateInquiryForm extends Component {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(formData)
       }).then((response) => {
-        if (response.status==201){
+        if (response.status===201){
           this.setState({message: "Успешно создано!"})
           console.log(response)
-        } else if(response.status==400){
+        } else if(response.status===400){
           this.setState({message: "Некорректные данные!"})
         }
       
@@ -83,7 +83,7 @@ export class CreateInquiryForm extends Component {
           <label for="Status">Статус*</label>
           <select name="status" id="status" ref="status">
             <option value="Created">Создан</option>
-            <option value="Recieved">Принят в работу исполнителем</option>
+            <option value="Received">Принят в работу исполнителем</option>
             <option value="Payment formed">Сформирован расчет</option>
             <option value="Returned">Возвращен исполнителю</option>
             <option value="Taken down">Исполнитель с расчета снят</option>
@@ -91,13 +91,13 @@ export class CreateInquiryForm extends Component {
           </select></p>
 
           <p> <label for="payment_id">ID расчета</label>
-          <input id="payment_id" type="text" ref="payment_id" /></p>
+          <input id="payment_id" type="number" ref="payment_id" /></p>
           <p> <label for="deadline">Дедлайн</label>
-          <input id="deadline" type="text" ref="deadline" /></p>
+          <input id="deadline" type="date" ref="deadline" /></p>
           <p> <label for="resolution">Резолюция</label>
           <input id="resolution" type="text" ref="resolution" /></p>
           <p> <label for="contractor_id">ID исполнителя*</label>
-          <input id="contractor_id" type="text" ref="contractor_id" /></p>
+          <input id="contractor_id" type="number" ref="contractor_id" /></p>
           <p className="helptext">* - обязательное поле</p>
           <div className="details"> 
             <h5>Добавить детали запроса(опционально)</h5>
@@ -107,9 +107,9 @@ export class CreateInquiryForm extends Component {
             </p>
             <p> 
             <label for="amount">Количество*</label>
-            <input id="amount" type="text" ref="amount"/></p>
+            <input id="amount" type="number" ref="amount"/></p>
             <p> <label for="okei">ОКЕИ*</label>
-            <input id="okei" type="text" ref="okei" /></p>
+            <input id="okei" type="number" ref="okei" /></p>
             <p> <label for="okpd">ОКПД2*</label>
             <input id="okpd" type="text" ref="okpd" /></p>
             <p><input type="submit" /></p>
