@@ -39,7 +39,7 @@ export class Inquiries extends Component {
                <td key={item.id}><a href={'http://127.0.0.1:8000/inquiry/'+item.id+'/details'}>{item.id}</a></td>
                <td>{item.name}</td>
                <td>{item.current_status.status}</td> 
-              <td>{item.current_status.contractor.username}</td> 
+               <td>{item.current_status.contractor ? item.current_status.contractor.username : ''}</td>
                <td>{item.payment_m}</td>
                <td>{(new Date(item.date_created)).toLocaleDateString()}</td>
                </tr>))}

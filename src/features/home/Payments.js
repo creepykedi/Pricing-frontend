@@ -12,7 +12,19 @@ export class Payments extends Component {
     actions: PropTypes.object.isRequired,
   };
 
+
   render() {
+    var payments = this.props.home.payments.map(item =>(
+      <tr>
+        <td key={item.id}>{item.payment_id}</td>
+        <td>{item.inquiry.name}</td>
+        <td>{item.NMC.position}</td>
+        <td>{item.NMC.price}</td>
+  
+        <td>{item.inquiry.current_status.contractor ? item.inquiry.current_status.contractor.username : ''}</td>
+        
+      </tr>))
+
     return (
       <div className="home-payments">
       <Button onClick={this.props.actions.getPaymentDetails} className="mb-2">Все расчеты</Button>
@@ -28,17 +40,8 @@ export class Payments extends Component {
                 </tr>
               </thead>
               <tbody>
-              {this.props.home.payments.map(item =>(
-                <tr>
-                  <td key={item.id}>{item.payment_id}</td>
-                  <td>{item.inquiry.name}</td>
-                  <td>{item.NMC.position}</td>
-                  <td>{item.NMC.price}</td>
-            
-                  <td>{item.inquiry.current_status.contractor.username}</td>
-                  
-                </tr>))}
-                </tbody>
+                {payments}
+              </tbody>
         </Table>
       </div>
     );
